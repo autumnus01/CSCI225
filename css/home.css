@@ -68,6 +68,13 @@ div.schedule{
     top: 25%;
     left: 2%;
 }
+div.schedule table{
+    vertical-align: center;
+    empty-cells: show
+}
+div.schedule tr:nth-child(2n){
+    background-color:#d9c7df
+}
 div.address{
     height: 8em;
     width: 20em;
