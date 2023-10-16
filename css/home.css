@@ -1,0 +1,189 @@
+/*Stylesheet by Autumn Hurley*/
+@import url(https://fonts.googleapis.com/css?family=Single+Day);
+
+/* 00: CSS Variables */
+:root{
+    --page-color: rgb(#7b435b);
+    --body-color: rgb(#8b687f);
+    --main-color: rgb(#9bb1b4);
+    --main-alt: rgb(#bcf8ec);
+    --unnamed: rgb(#360069); /*rename this one*/
+
+}
+/* 01: Color */
+body{
+    background-image:url("https://rivendell.neocities.org/backgrounds/stars3.gif");
+}
+/* 02: Typography */
+body{
+    font-family: 'Single Day';
+}
+ul, ol{
+    font-weight: 500;
+    color: black;
+}
+h1{
+    text-transform: uppercase;
+    letter-spacing: 5px
+}
+p{
+    line-height: 20px;
+    text-align: center;
+}
+a{
+    text-decoration: none;
+}
+p::first-letter{
+    font-size: 20pt;
+}
+ul{
+    list-style-type: none;
+    list-style-image: url("/CSCI225/img/heart.png");
+}
+/* O3: Layout */   
+div.introduction, div.portfolio, div.schedule, div.address, div.assignment {
+    position: absolute;
+    padding: 5px;
+    background-color: white;
+    border: 2px dashed black;
+    visibility: hidden;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: 0.2s;
+    z-index: -1;
+    transform: scale(0.025);
+    text-align: center;
+}
+div.introduction{
+    height: 12em;
+    width: 40em;
+    top: 65%;
+    left: 5%;
+}
+div.schedule{
+    height: 22em;
+    width: 32em;
+    top: 25%;
+    left: 2%;
+}
+div.address{
+    height: 8em;
+    width: 20em;
+    top: 12%;
+    left: 16%;
+}
+div.assignment{
+    height: 10em;
+    width: 22em;
+    top: 11%;
+    left: 60%;
+}
+div.portfolio{
+    height: 12em;
+    width: 28em;
+    top: 61%;
+    left: 63%;
+}
+img#assignmentsicon, img#contacticon, img#introductionicon, img#portfolioicon, img#scheduleicon{
+    position: absolute;
+    margin: auto auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    scale: 0.5;
+}
+img#csci225text{
+    position: absolute;
+    margin: auto auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    scale: 0.8;
+}
+img#assignmentsicon{
+    bottom: 14em;
+    left: 12em;
+}
+img#contacticon{
+    bottom: 14em;
+    left: -12em
+}
+img#scheduleicon{
+    bottom: -4em;
+    left: -20em;
+}
+img#introductionicon{
+    bottom: -15em;
+    left: 0;
+}
+img#portfolioicon{
+    bottom: -7em;
+    left: 22em;
+}
+div.navbar {
+    height: 50%;
+    z-index: 4;
+    background-color: white;
+    border: 2px dashed black;
+    width: 45%;
+}
+div.navbar ul{
+    display: flex;
+}
+div.navbar li{
+    margin-right: 30px;
+}
+footer{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: white;
+}
+/*Hover and active behavior, animations*/
+img#assignmentsicon:hover {
+    transform: scale(1.2) rotate(10deg);
+}
+img#contacticon:hover {
+    transform: scale(1.2) rotate(-12deg);
+}
+img#scheduleicon:hover{
+    transform: scale(1.2) rotate(6deg);
+}
+img#introductionicon:hover{
+    transform: scale(1.2) rotate(-15deg);
+}
+img#portfolioicon:hover{
+    transform:scale(1.2) rotate(7deg);
+}
+img#assignmentsicon:active ~ div.assignment{
+    visibility: visible;
+    transform: scale(1);
+}
+img#scheduleicon:active ~ div.schedule{
+    visibility: visible;
+    transform: scale(0.8);
+}
+img#introductionicon:active ~ div.introduction{
+    visibility: visible;
+    transform: scale(1);
+}
+img#portfolioicon:active ~ div.portfolio{
+    visibility: visible;
+    transform: scale(0.9);
+}
+img#contacticon:active ~ div.address{
+    visibility: visible;
+    transform: scale(1);
+}
+a:hover{
+    text-decoration: underline;
+    font-size: 13pt;
+}

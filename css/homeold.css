@@ -1,0 +1,189 @@
+/*Stylesheet by Autumn Hurley*/
+@import url(https://fonts.googleapis.com/css?family=Single+Day);
+
+/* 00: CSS Variables */
+:root{
+    --page-color: rgb(#7b435b);
+    --body-color: rgb(#8b687f);
+    --main-color: rgb(#9bb1b4);
+    --main-alt: rgb(#bcf8ec);
+    --unnamed: rgb(#360069); /*rename this one*/
+
+}
+/* 01: Color */
+body{
+    background-image:url("https://rivendell.neocities.org/backgrounds/stars3.gif");
+}
+/* 02: Typography */
+body{
+    font-family: 'Single Day';
+}
+ul, ol{
+    font-weight: 500;
+    color: black;
+}
+h1{
+    text-transform: uppercase;
+    letter-spacing: 5px
+}
+p{
+    line-height: 20px;
+    text-align: center;
+}
+a{
+    text-decoration: none;
+}
+p::first-letter{
+    font-size: 20pt;
+}
+ul{
+    list-style-type: none;
+    list-style-image: url("/CSCI225/img/heart.png");
+}
+/* O3: Layout */
+div.introduction, div.portfolio, div.schedule, div.address, div.assignment {
+    position: absolute;
+    background-color: white;
+    border: 2px dashed black;
+    margin: 10px;
+    bottom: 0;
+    top: 20%;
+    height: 325%;
+    width: 40%;
+    visibility: hidden;
+    z-index: -2;
+    transform: scale(0.8);
+}
+div.main {
+    height: 100px;
+    left: 50px;
+    right: 0;
+    top: -23px;
+    text-align: center;
+    position: absolute;
+    z-index: -1;
+}
+img.icons{
+    z-index: 1;
+}
+div.assignment{
+    transform:translate(725px, 50px) scale(0.025);
+    transition: 0.2s;
+    width: 20%;
+    height: 150%;
+}
+div.address{
+    transform: translate(230px, 75px) scale(0.025);
+    transition: 0.2s;
+    height: 125%;
+    width: 20%;
+}
+div.schedule{
+    transform: translate(-50px, 50px) scale(0.025);
+    height: 360%;
+    transition: 0.2s;
+}
+div.schedule tr:nth-child(2n){
+    background-color: rgb(216, 211, 236);
+}
+div.schedule table{
+    padding: 5px;
+    vertical-align: middle;
+    empty-cells: show;
+}
+div.portfolio{
+    transform: translate(775px, 175px) scale(0.025);
+    transition: 0.2s;
+    height: 175%;
+}
+div.introduction{
+    transform: translate(100px, 450px) scale(0.025);
+    transition: 0.2s;
+    height: 175%;
+}
+div.navbar{
+    top:100px;
+    left:0;
+    z-index: 0;
+    background-color: white;
+    border: 2px dashed black;
+    width: 45%;
+}
+div.navbar li{
+    border-radius: 10px;
+}
+
+img#csci225text{
+    transform: translate(-200px, -50px) scale(0.8);
+}
+img#assignmentsicon{
+    transform: translate(500px, 125px) scale(0.5);
+}
+img#contacticon{
+    transform: translate(25px, 125px) scale(0.5);
+}
+img#scheduleicon{
+    transform: translate(-60px, 30px) scale(0.5);
+}
+img#introductionicon{
+    transform: translate(-200px, 350px) scale(0.5);
+}
+img#portfolioicon{
+    transform: translate(-350px, 300px) scale(0.5);
+}
+div.navbar {
+    height: 50%;
+    z-index: 4;
+}
+div.navbar ul{
+    display: flex;
+}
+div.navbar li{
+    margin-right: 30px;
+}
+footer{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: white;
+}
+/*Hover and active behavior, animations*/
+img#assignmentsicon:hover {
+    transform: translate(500px, 125px) scale(0.6) rotate(10deg);
+}
+img#contacticon:hover {
+    transform: translate(25px, 125px) scale(0.6) rotate(-12deg);
+}
+img#scheduleicon:hover{
+    transform: translate(-60px, 30px) scale(0.6) rotate(6deg);
+}
+img#introductionicon:hover{
+    transform: translate(-200px, 350px) scale(0.6) rotate(-15deg);
+}
+img#portfolioicon:hover{
+    transform: translate(-350px, 300px) scale(0.6) rotate(7deg);
+}
+img#assignmentsicon:active ~ div.assignment{
+    visibility: visible;
+    transform:translate(725px, 50px) scale(1);
+}
+img#scheduleicon:active ~ div.schedule{
+    visibility: visible;
+    transform: translate(-50px, 50px) scale(0.8);
+}
+img#introductionicon:active ~ div.introduction{
+    visibility: visible;
+    transform: translate(100px, 450px) scale(1);
+}
+img#portfolioicon:active ~ div.portfolio{
+    visibility: visible;
+    transform: translate(750px, 200px) scale(0.9);
+}
+img#contacticon:active ~ div.address{
+    visibility: visible;
+    transform: translate(230px, 75px) scale(1);
+}
+a:hover{
+    text-decoration: underline;
+    font-size: 13pt;
+}
