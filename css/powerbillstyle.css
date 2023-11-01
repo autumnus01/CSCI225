@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text');
+
+html {
+    background-color: aliceblue;
+    padding: 0% var(1.5vw) 0% 0%;
+}
+body{
+    font-family: 'Red Hat Text', sans-serif;
+    display: grid;
+    grid-template-columns: 50%;
+    grid-template-rows: 50%;
+    gap: 10px;
+}
+.calculator{
+    grid-row:1/2;
+    grid-column:1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 30em;
+    padding: 2em;
+    border: 1px solid grey;
+    border-radius: 5%;
+}
+.details{
+    grid-row:1/2;
+    grid-column:2;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 30em;
+    padding: 2em;
+    border: 1px solid grey;
+    border-radius: 5%;
+}
+form{
+    text-align: right;
+}

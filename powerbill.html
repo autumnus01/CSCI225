@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html lang="en-us">
+<head>
+    <link rel="stylesheet" href="css/powerbillstyle.css">
+    <title>Georgia Power Bill</title>
+</head>
+<body>
+    <div class="calculator">
+        <div class="info">
+            <h1>Georgia Power Bill Calculator</h1>
+            <p>
+                The utility bill calculator is a resource that the Commission is making 
+                available that allows a consumer to check the accuracy of his/her monthly 
+                electric bill. A bill calculator has been prepared for customers of the 
+                Georgia Power Company. This bill calculator applies only to residential 
+                customers who are receiving service under the standard Residential Tariff (R-27). 
+                For more details regarding Georgia Power's residential tariff offerings, 
+                please visit Georgia Power Pricing & Rates.
+            </p>
+            <p>
+                Effective August 2023
+            </p>
+        </div>
+        <div class="form">
+            <form action="" name="calculatorform">
+                <p>
+                    Enter your monthly usage in kilowatt hours (kWh): 
+                    <input type="number" name="monthlyusage" id="usage">
+                </p>
+                <p>
+                    Enter the number of days for your current billing period: 
+                    <input type="number" name="billingperiod" id="period">
+                </p>
+                <p>
+                    Is your residence inside the city limits of your city?
+                    <input type="checkbox" name="inCityLimits" id="inCity">
+                </p>
+                <p>
+                    Is this a summer month? (June-September)
+                    <input type="checkbox" name="summer" id="summer">
+                </p>
+                <p>
+                    Enter sales tax (%):
+                    <input type="number" name="salestax" id="tax">
+                </p>
+                <p>
+                    <input type="button" value="Submit" name="sbutton">
+                    <input type="reset" value="Reset" name="rbutton">
+                </p>
+            </form>
+        </div>
+    </div>
+    <div class="details">
+        <h1>Details of your bill</h1>
+        <table border="1">
+                <tr>
+                    <td>Items</td>
+                    <td>Fees</td>
+                </tr>
+                <tr>
+                    <td>Base charge:</td>
+                    <td id="basecharge">0</td>
+                </tr>
+                <tr>
+                    <td>Tier 1 component (kWh):</td>
+                    <td id="tier1">0</td>
+                </tr>
+                <tr>
+                    <td>Tier 2 component (kWh):</td>
+                    <td id="tier2">0</td>
+                </tr>
+                <tr>
+                    <td>Tier 3 component (kWh):</td>
+                    <td id="tier3">0</td>
+                </tr>
+                <tr>
+                    <td><b>Base revenue -- Base bill subtotal:</b></td>
+                    <td id="baserevenue">0</td>
+                </tr>
+                <tr>
+                    <td>Fuel cost rider:</td>
+                    <td id="fuel">0</td>
+                </tr>
+                <tr>
+                    <td>Demand side management residential rider:</td>
+                    <td id="demand">0</td>
+                </tr>
+                <tr>
+                    <td>Nuclear construction cost recovery rider:</td>
+                    <td id="nuclear">0</td>
+                </tr>
+                <tr>
+                    <td>Environmental Compliance Cost Recovery Rider:</td>
+                    <td id="environmental">0</td>
+                </tr>
+                <tr>
+                    <td><b>Total Revenue -- Current service subtotal:</b></td>
+                    <td id="totalrevenue">0</td>
+                </tr>
+                <tr>
+                    <td>Franchise fee:</td>
+                    <td id="franchise">0</td>
+                </tr>
+                <tr>
+                    <td><b>Total (excluding tax):</b></td>
+                    <td id="totalnotax">0</td>
+                </tr>
+                <tr>
+                    <td><b>Total (with tax):</b></td>
+                    <td id="totalwithtax">0</td>
+                </tr>
+        </table>
+    </div>
+    <script>
+        basecharge = document.getElementById("basecharge");
+        tier1 = document.getElementById("tier1");
+        tier2 = document.getElementById("tier2");
+        tier3 = document.getElementById("tier3");
+        baserevenue = document.getElementById("baserevenue");
+        fuel = document.getElementById("fuel");
+        demand = document.getElementById("demand");
+        nuclear = document.getElementById("nuclear");
+        environmental = document.getElementById("environmental");
+        totalrevenue = document.getElementById("totalrevenue");
+        franchise = document.getElementById("franchise");
+        totalnotax = document.getElementById("totalnotax");
+        totalwithtax = document.getElementById("totalwithtax");
+        document.getElementsByName("sbutton")[0].addEventListener("click", calculate, true);
+        function calculate(){
+            var usage = parseInt(document.getElementById("usage").value);
+            var period = parseInt(document.getElementById("period").value);
+            var incity = document.getElementById("inCity");
+            var summer = document.getElementById("summer");
+            var tax = parseInt(document.getElementById("tax").value);
+            var basechargeVal = 0.4603*period;
+            var tier1Val = 0
+            var tier2Val = 0
+            var tier3Val = 0
+            var baserevenueVal = 0
+            var fuelVal = 0;
+            if(summer.checked==true){
+                if(usage<651){
+                    tier1Val = usage*0.066678;
+                    tier2Val = 0;
+                    tier3Val = 0;
+                }
+                else if(usage>650 & usage<1001){
+                    tier1Val = 650*0.066678;
+                    tier2Val = (usage-650)*0.110748;
+                    tier3Val = 0;
+                }
+                else if(usage>1000){
+                    tier1Val = 650*0.066678;
+                    tier2Val = 350*0.110748;
+                    tier3Val = (usage-1000)*0.114625;
+                }
+                fuelVal = 0.045876*usage
+                baserevenueVal = tier1Val+tier2Val+tier3Val;
+            }
+            else{
+                if(usage<651){
+                    tier1Val = usage*0.062404;
+                    tier2Val = 0;
+                    tier3Val = 0;
+                }
+                else if(usage>650 & usage<1001){
+                    tier1Val = 650*0.062404;
+                    tier2Val = (usage-650)*0.062404
+                    tier3Val = 0;
+                }
+                else if(usage>1000){
+                    tier1Val = 650*0.062404;
+                    tier2Val = 350*0.062404;
+                    tier3Val = (usage-1000)*0.062404;
+                }
+                fuelVal = 0.042859*usage;
+                baserevenueVal = basechargeVal+tier1Val+tier2Val+tier3Val;
+            }
+            var demandVal = baserevenueVal*0.015989;
+            var environmentalVal = baserevenueVal*0.162813;
+            var nuclearVal = baserevenueVal*0.041562;
+            var totalrevenueVal = baserevenueVal + fuelVal + demandVal + nuclearVal + environmentalVal;
+            var franchiseVal = 0
+            if(incity.checked==true){
+                franchiseVal = totalrevenueVal*0.030674;
+            }
+            else{
+                franchiseVal = totalrevenueVal*0.011839;
+            }
+            var totalnotaxVal = totalrevenueVal + franchiseVal;
+            var totalwithtaxVal = totalnotaxVal+(totalnotaxVal*(tax*0.01));
+            basecharge.textContent=basechargeVal;
+            tier1.textContent = tier1Val;
+            tier2.textContent = tier2Val;
+            tier3.textContent = tier3Val;
+            baserevenue.textContent = baserevenueVal;
+            fuel.textContent = fuelVal;
+            demand.textContent = demandVal;
+            nuclear.textContent = nuclearVal;
+            environmental.textContent = environmentalVal;
+            totalrevenue.textContent = totalrevenueVal;
+            franchise.textContent = franchiseVal;
+            totalnotax.textContent = totalnotaxVal;
+            totalwithtax.textContent = totalwithtaxVal;
+            if(totalwithtaxVal>500){
+                window.open("https://www.georgiapower.com/residential/save-money-and-energy/products-programs.html");
+            }
+        }
+    </script>
+</body>
