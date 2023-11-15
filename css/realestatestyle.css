@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text');
+
+html {
+    padding: 0% var(1.5vw) 0% 0%;
+    background: url('../img/Estate.jpg');
+}
+body{
+    height: 100%;
+    font-family: 'Red Hat Text', sans-serif;
+}
+.inputui{
+    position: absolute;
+    background: lightblue;
+    top: 0;
+    left: 40em;
+    opacity: 0.85;
+    margin: 5em;
+    padding: 2em;
+    width: 20em;
+    visibility: visible;
+    text-align: left;
+}
+.result{
+    position: absolute;
+    top: 0;
+    right: 5em;
+    opacity: 0.85;
+    margin: 1em;
+    padding: 0em;
+    width: 35em;
+    visibility: hidden;
+    text-align: center;
+    font-size: 12pt;
+}
+.result h1{
+    font-size:20pt;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+table{
+    border: none;
+    border-spacing:0;
+    display: flex;
+    justify-content: center;
+}
+tr{
+    background-color:aliceblue;
+    border: 1px grey solid;
+}
+td{
+    width: 100%;
+    height: 20%;
+}
+tr:nth-child(2n){
+    background-color: lightblue;
+}
+
+#calculate{
+    background: rgb(131, 131, 201);
+    color: white;
+    width: 100%;
+    text-align: center;
+    border: none;
+}
+#calculate:hover{
+    background: rgb(79, 79, 153);
+}
+
+div.navbar {
+    height: 50%;
+    z-index: 4;
+    background-color: rgba(206, 206, 206, 0.377);
+    border: 1px solid black;
+    opacity: 0.8;
+    width: 20em;
+}
+ul{
+    list-style-type: none;
+}
+li{
+    border: 1px solid rgb(102, 102, 102);
+    background-color: rgba(128, 128, 128, 0.404);
+    display: inline-block;
+    padding: 10px;
+    height: 100%;
+    color: white;
+}
+li:hover{
+    background-color: rgba(128, 128, 128, 0.623);
+}
+a{
+    text-decoration: none;
+    color: white;
+}

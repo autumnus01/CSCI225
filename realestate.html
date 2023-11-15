@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html lang="en-us">
+
+<head>
+    <link rel="stylesheet" href="css/realestatestyle.css">
+    <title>Real Estate Loan Calculator</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <ul>
+            <li>Buy</li>
+            <li>Sale</li>
+            <li><a href="realestate.html">Loan</a></li>
+            <li><a href="index.html">About</a></li>
+        </ul>
+    </div>
+    <div class="inputui" id="inp">
+        <form action="" name="loancalculator">
+            <p>
+                Loan amount:
+                <input type="number" name="loanamount" id="amount">$
+            </p>
+            <p>
+                Interest rate:
+                <input type="number" name="interestrate" id="rate">%
+            </p>
+            <p>
+                Loan term:
+                <input type="number" name="loanterm" id="term">years
+            </p>
+            <p>
+                Loan start:
+                <input type="date" name="startyear" id="start">
+            </p>
+            <p>
+                <input type="button" value="Calculate" name="calculatebutton" id="calculate">
+            </p>
+        </form>
+    </div>
+    <div class="result" id="res"> 
+        <h1 id="mpay"></h1>
+        <div id="loopsection"><!--loop goes here-->
+
+        </div>
+    </div>
+    <script>
+        document.getElementById("calculate").addEventListener("click", calc, false);
+        function calc() {
+            var loanamount = parseInt(document.getElementById("amount").value);
+            var loanstart = document.getElementById("start").value;
+            var loanterm = parseInt(document.getElementById("term").value);
+            var interestrate = (parseFloat(document.getElementById("rate").value))/100;
+            var output = "";
+            output+="<table border=1>";
+            output+="<tr>";
+            output+="<td>Date</td>";
+            output+="<td>Interest</td>";
+            output+="<td>Principal</td>";
+            output+="<td>Balance</td>";
+            output+="</tr>";
+            date = loanstart;
+            var monthlyrate = interestrate/(12);
+            var monthlypayment = (loanamount*monthlyrate)/(1-Math.pow((1+monthlyrate),-(12*loanterm)));
+            console.log(monthlypayment);
+            balance = loanamount
+            document.getElementById("mpay").innerText="Your monthly payment is: " + monthlypayment.toFixed(2);
+            for (var i = 1; i <= loanterm; i++) {
+                interestannual = 0;
+                principalannual = 0;
+                for(var j=1; j<=12;j++){
+                interest = balance*monthlyrate;
+                principal = monthlypayment - interest;
+                balance = balance + interest - monthlypayment;
+                interestannual+=interest;
+                principalannual+=principal;
+                }
+                output += "<tr>";
+                    output += "<td>"; //date
+                        output+=date;
+                        date = incYear(date);
+                    output += "</td>";
+                    output += "<td>"; //interest
+                        output+="$"+interestannual.toFixed(2);
+                    output += "</td>";
+                    output += "<td>"; //principal
+                        output+="$"+principalannual.toFixed(2);
+                    output += "</td>";
+                    output += "<td>"; //balance
+                        output+="$"+balance.toFixed(2);
+                    output += "</td>";
+                output += "</tr>";
+            }
+            output+="</table>";
+            document.getElementById("loopsection").innerHTML=output;
+            document.querySelector(".result").style.visibility="visible";
+            document.querySelector(".inputui").style.visibility="hidden";
+        }
+        function incYear(x) {
+            var [year, month, day] = x.split("-");
+            var updatedYear = parseInt(year) + 1;
+            return updatedYear + "-" + month + "-" + day;
+        }
+    </script>
+</body>
+
+</html>
